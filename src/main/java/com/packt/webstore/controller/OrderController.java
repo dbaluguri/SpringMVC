@@ -12,7 +12,7 @@ public class OrderController {
 	private OrderService orderService;
 
 	@RequestMapping("/order/P1234/2")
-	public String process() {
+	public String process(Model model) {
 		orderService.processOrder("P1234", 2);
 		return "redirect:/products";
 	}
