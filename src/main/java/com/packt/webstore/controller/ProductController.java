@@ -3,6 +3,7 @@ package com.packt.webstore.controller;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -30,6 +31,12 @@ public class ProductController {
 		modelAndView.setViewName("products");
 		
 		return modelAndView;
+	}
+	
+	@RequestMapping("/{category}")
+	public String getProductsByCategory(Model model, @PathVariable("category") String productCategory) {
+		model.addAttribute("products", productService.getProductsByCategory(productCategory));
+		return "products";
 	}
 	
 }
