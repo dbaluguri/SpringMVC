@@ -4,6 +4,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.servlet.ModelAndView;
+
 import com.packt.webstore.service.ProductService;
 
 @Controller
@@ -20,10 +22,14 @@ public class ProductController {
 	}
 	
 	@RequestMapping("all")
-	public String allProduts(Model model) {
-		model.addAttribute("products", productService.getAllProducts());
+	public ModelAndView allProduts(Model model) {
+		ModelAndView modelAndView = new ModelAndView();
 		
-		return "products";
+		modelAndView.addObject("products", productService.getAllProducts());
+		
+		modelAndView.setViewName("products");
+		
+		return modelAndView;
 	}
 	
 }
