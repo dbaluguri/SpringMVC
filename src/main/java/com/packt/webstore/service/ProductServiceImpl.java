@@ -32,4 +32,10 @@ public class ProductServiceImpl implements ProductService {
 		return productRepository.getProductById(productId);
 	}
 
+	public void addProduct(Product product) {
+		productRepository.addProduct(product);
+	}
+	
+	
+
 }

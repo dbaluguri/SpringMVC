@@ -90,4 +90,8 @@ public class InMemoryProductRepository implements ProductRepository {
 		return productsByCategory;
 	}
 
+	public void addProduct(Product product) {
+		listOfProducts.add(product);
+	}
+
 }
