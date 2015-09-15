@@ -2,17 +2,44 @@ package com.packt.webstore.domain;
 
 import java.math.BigDecimal;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.Table;
+
+@Entity
+@Table(name="PRODUCT")
 public class Product {
 
+	@Id
+	@Column(name="PRODUCT_ID")
 	private String productId;
+	
+	@Column(name="PNAME")
 	private String name;
+
+	@Column(name="UNIT_PRICE")
 	private BigDecimal unitPrice;
+	
+	@Column(name="DESCRIPTION")
 	private String description;
+	
+	@Column(name="MANUFACTURER")
 	private String manufacturer;
+	
+	@Column(name="PCATEGORY")
 	private String category;
+	
+	@Column(name="UNITS_IN_STOCK")
 	private long unitsInStock;
+	
+	@Column(name="UNITS_IN_ORDER")
 	private long unitsInOrder;
-	private boolean discontinued;
+	
+	@Column(name="DISCONTINUED")
+	private int discontinued;
+	
+	@Column(name="PCONDITION")
 	private String condition;
 	
 	public Product() {
@@ -89,11 +116,11 @@ public class Product {
 		this.unitsInOrder = unitsInOrder;
 	}
 
-	public boolean isDiscontinued() {
+	public int getDiscontinued() {
 		return discontinued;
 	}
 
-	public void setDiscontinued(boolean discontinued) {
+	public void setDiscontinued(int discontinued) {
 		this.discontinued = discontinued;
 	}
 

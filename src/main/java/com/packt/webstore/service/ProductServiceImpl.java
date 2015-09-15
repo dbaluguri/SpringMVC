@@ -6,34 +6,37 @@ import java.util.Set;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
+import com.packt.webstore.dao.ProductDAO;
 import com.packt.webstore.domain.Product;
 import com.packt.webstore.domain.repository.ProductRepository;
 
 @Service
+@Transactional
 public class ProductServiceImpl implements ProductService {
 
 	@Autowired
-	private ProductRepository productRepository;
+	private ProductDAO productDAO;
 	
 	public List<Product> getAllProducts() {
-		return productRepository.getAllProducts();
+		return productDAO.getAllProducts();
 	}
 
 	public List<Product> getProductsByCategory(String category) {
-		return productRepository.getProductsByCategory(category);
+		return productDAO.getProductsByCategory(category);
 	}
 	
 	public Set<Product> getProductsByFilter(Map<String, List<String>> filterParams) {
-		return productRepository.getProductsByFilter(filterParams);
+		return productDAO.getProductsByFilter(filterParams);
 	}
 
 	public Product getProductById(String productId) {
-		return productRepository.getProductById(productId);
+		return productDAO.getProductById(productId);
 	}
 
 	public void addProduct(Product product) {
-		productRepository.addProduct(product);
+		productDAO.addProduct(product);
 	}
 	
 	
