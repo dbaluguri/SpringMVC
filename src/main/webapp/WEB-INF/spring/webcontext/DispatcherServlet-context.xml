@@ -13,6 +13,10 @@ http://www.springframework.org/schema/mvc/spring-mvc-4.0.xsd
 http://www.springframework.org/schema/tx  
 http://www.springframework.org/schema/tx/spring-tx-4.0.xsd">
 
+	<bean id= "messageSource" class="org.springframework.context.support.ResourceBundleMessageSource">
+		<property name="basename" value="messages"/>
+	</bean>
+
 	<!-- Getting Database properties -->
     <context:property-placeholder location="classpath:hibernate.properties"/>
     
